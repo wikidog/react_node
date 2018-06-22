@@ -70,8 +70,9 @@ app.use(
     // proxy: true,
   })
 );
-// Second: tell Passport to use cookie
+// this is required to initialize Passport
 app.use(passport.initialize());
+// Second: tell Passport to use cookie
 app.use(passport.session());
 
 // ---------------------------------------------------------------------
