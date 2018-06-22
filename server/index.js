@@ -26,7 +26,11 @@ mongoose
 
 // ---------------------------------------------------------------------
 
-// The order of middler is important!!!
+// #############################################
+// ##                                         ##
+// ##  The order of middlers is important!!!  ##
+// ##                                         ##
+// #############################################
 //
 // Take a look at the following link to see how to configure Passport
 // https://github.com/mstade/passport-google-oauth2/blob/master/example/app.js
@@ -57,6 +61,8 @@ app.use(bodyParser.json({ type: '*/*' }));
 //
 // Session
 //
+// First: we have to let cookie middleware decrypt the cookie, if user
+//        sends us a cookie (cookie is encrypted).
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
@@ -64,7 +70,7 @@ app.use(
     // proxy: true,
   })
 );
-// tell Passport to use cookie
+// Second: tell Passport to use cookie
 app.use(passport.initialize());
 app.use(passport.session());
 
